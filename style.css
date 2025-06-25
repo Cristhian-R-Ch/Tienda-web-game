@@ -1,0 +1,483 @@
+/* Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Estilo general */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0a2e36; /* Fondo oscuro principal */
+    color: #ffffff;            /* Texto blanco */
+    line-height: 1.6;
+}
+/* Header */
+.header-principal {
+    background-color: #103f48;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    box-shadow: 0 2px 6px #00000055; /* Sombra suave */
+}
+/* Área (logo y nombre) */
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+}
+
+.game-name {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #00ffe7;
+}
+/* Selector de idioma - avatar */
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+/* Botón color cyan, sin borde , redondeado */
+.idioma-selector {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    font-weight: bold;
+    background-color: #00ffe7; 
+    color: #000000; /* Texto negro */
+    cursor: pointer;
+}
+/* Usuario: icono - texto */
+.user-avatar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: #ffffff; /* Texto e icono */
+    font-weight: bold;
+}
+/* Tamaño icono */
+.user-avatar i.fa-user {
+    font-size: 22px;
+}
+/* Usuario oculto inicialmente */
+.nombre-usuario.oculto {
+    display: none;
+}
+/* Modal de login */
+.modal-login {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0000005e; /* Fondo negro translucido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+/* Contenido - modal */
+.modal-contenido {
+    background-color: #147d87;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px #00000087;
+    text-align: center;
+    width: 300px;
+    color: #fff;
+    position: relative; /* boton cerrar */
+}
+/* Titulo en el modal */
+.modal-contenido h3 {
+    margin-bottom: 15px;
+    color: #00ffe7;
+}
+/* inout usuario - contraseña */
+.modal-contenido input[type="text"],
+.modal-contenido input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: none;
+}
+/* Confirmacion "Ëntrar" */
+.modal-contenido input[type="submit"] {
+    background-color: #00ffe7;
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
+    width: 40%;
+    border-radius: 6px;
+    cursor: pointer;
+}
+/* Efecto "Entrar" */
+.modal-contenido input[type="submit"]:hover {
+    background-color: #00b3a6;
+}
+/* Botón cerrar */
+.cerrar {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.8em;
+    color: white;
+    cursor: pointer;
+}
+/* Ocultar modal por defecto */
+.oculto {
+    display: none;
+}
+
+/* |||||||||||||||| */
+/* Banner principal */
+.banner-principal {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 10px #00000055;
+}
+/* Iamgen fondo */
+.img-banner {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6); /* Oscurecer imagen */
+}
+/* Tiulo - parrafo (banner) */
+.texto-banner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.texto-banner h1 {
+    font-size: 2.8em;
+    color: #00ffe7;
+    text-shadow: 2px 2px 6px #000;
+}
+
+.texto-banner p {
+    font-size: 1.2em;
+    color: #ffffff;
+    margin-top: 10px;
+    text-shadow: 1px 1px 4px #000;
+}
+
+/* ||||||||||||||||||||||||||||||| */
+/* Seleccion de servidor-personaje */
+.seleccion-servidor {
+    background-color: #103f48;
+    padding: 20px;
+    margin: 40px auto;
+
+    /* Tamaño compacto y centrado */
+    width: 90%;
+    max-width: 400px;
+
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00000033;
+    color: #ffffff;
+    text-align: center;
+}
+
+.seleccion-servidor label {
+    display: block;
+    margin: 12px 0 6px;
+    text-align: left;
+}
+/* Selector SV - Player */
+.seleccion-servidor select,
+.seleccion-servidor button {
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+}
+/* Btn "Confirmar" */
+.seleccion-servidor button {
+    background-color: #00ffe7;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.seleccion-servidor button:hover {
+    background-color: #00b3a6;
+}
+/* Resumen servidor y player seleccionado */
+#resumen-personaje {
+    margin-top: 0px;
+}
+
+#resumen-personaje p {
+    margin-bottom: 10px;
+}
+/* Desplegable centrado */
+option {
+   text-align: center;
+   direction: rtl;
+}
+
+/* Ocultar elementos */
+.oculto {
+    display: none;
+}
+
+/* ||||||||||||||||||| */
+/* Carrusel de Ofertas */
+.carrusel-ofertas {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto 50px auto;
+  overflow: hidden; /* Oculta cuando sale del marco */
+  border-radius: 10px;
+  background-color: #103f48;
+  padding: 15px 20px;
+  box-shadow: 0 0 15px #00000044;
+}
+/* Ofertas Populares */
+.carrusel-ofertas h2 {
+  color: #00ffe7;
+  margin-bottom: 12px;
+}
+
+.carrusel-pista {
+  display: flex;
+  gap: 20px;
+  white-space: nowrap; /* Mostrar texto en una sola linea */
+}
+
+.oferta-item {
+  background-color: #147d87;
+  color: #fff;
+  min-width: 180px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  flex-shrink: 0; /* Evita que el elemento de encoja */
+  box-shadow: 0 0 8px #00000099;
+  text-align: center;
+}
+/* Titulo de ofertas */
+.oferta-item h3 {
+  margin-bottom: 8px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+/* Precios de ofertas */
+.oferta-item p {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #00ffe7;
+}
+
+/* ||||||||| */
+/* Productos */
+.catalogo-productos {
+  max-width: 900px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+  color: #fff;
+}
+
+.catalogo-productos h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #00ffe7;
+  text-align: center;
+}
+/* Posicion - color de label-filtros */
+.filtros-orden {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  font-weight: bold;
+}
+
+.filtros-orden label {
+  margin-right: 6px;
+  align-self: center;
+}
+
+.filtros-orden select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  background-color: #00ffe7;
+  color: #000;
+  cursor: pointer;
+  min-width: 140px;
+}
+
+/*  */
+.lista-productos {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 20px;
+}
+
+.producto-item {
+  background-color: #103f48;
+  border-radius: 10px;
+  box-shadow: 0 0 8px #00000077;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.producto-item img {
+  width: 100%;
+  height: 140px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  background-color: #00000055;
+}
+
+.producto-nombre {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #00ffe7;
+  margin-bottom: 6px;
+}
+
+.producto-descripcion {
+  font-size: 0.9em;
+  margin-bottom: 10px;
+  color: #cccccc;
+  flex-grow: 1;
+}
+
+.producto-precio {
+  font-weight: bold;
+  color: #00ffe7;
+  margin-bottom: 12px;
+  font-size: 1.1em;
+}
+
+.boton-comprar {
+  background-color: #00ffe7;
+  border: none;
+  color: #000;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.boton-comprar:hover {
+  background-color: #00b3a6;
+}
+
+/* ||||||||||||||||| */
+/* Carrito */
+.carrito-compras {
+  background-color: #103f48;
+  padding: 20px;
+  margin: 40px auto;
+  max-width: 700px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00000044;
+  color: #fff;
+  text-align: center;
+}
+
+.carrito-compras ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.carrito-compras li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #00ffe755;
+}
+
+.carrito-compras button {
+  background-color: #00ffe7;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.carrito-total {
+  margin-top: 10px;
+  font-size: 1.2em;
+  color: #00ffe7;
+}
+
+/* ||||||||||||||||| */
+/* Formulario de compra */
+.formulario-compra {
+  background-color: #147d87;
+  padding: 25px 30px;
+  margin: 30px auto 60px;
+  max-width: 700px;
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 0 0 10px #00000055;
+}
+
+.formulario-compra h2 {
+  color: #00ffe7;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.formulario-compra label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.formulario-compra input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  border: none;
+}
+
+.formulario-compra button {
+  background-color: #00ffe7;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Utilidad */
+.oculto {
+  display: none;
+}

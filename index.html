@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Encabezado -->
+    <header class="header-principal">
+        <div class="logo-area">
+            <img src="assets/img/logo.png" alt="Logo del juego" class="logo-img">
+            <span class="game-name">Ætherion</span>
+        </div>
+
+        <div class="header-controls">
+            <!-- Selector de idioma -->
+            <select id="idioma-selector" class="idioma-selector">
+                <option value="es">🌐Español</option>
+                <option value="en">🌐English</option>
+                <option value="pr">🌐Portugués</option>
+            </select>
+
+            <!-- Usuario -->
+            <div class="user-avatar" onclick="mostrarLoginModal()">
+                <i class="fa-regular fa-user"></i>
+                <span id="nombre-usuario" class="nombre-usuario oculto"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login-modal -->
+    <div id="login-modal" class="modal-login oculto">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarLoginModal()">
+                <i class="fa-solid fa-circle-xmark"></i></span>
+            <h3>Iniciar sesión</h3>
+            <form onsubmit="return procesarLogin()">
+                <input type="text" id="usuario" placeholder="Usuario" required><br>
+                <input type="password" id="password" placeholder="Contraseña" required><br>
+                <input type="submit" value="Entrar">
+            </form>
+        </div>
+    </div>
+
+    <!-- |||||||||||||||| -->
+    <!-- Banner principal -->
+    <section class="banner-principal">
+        <img src="assets/img/banner.jpg" alt="Banner game" class="img-banner">
+        <div class="texto-banner">
+            <h1>Bienvenido a Ætherion</h1>
+            <p>Explora un mundo de fantasía, poder y recompensas únicas.</p>
+        </div>
+    </section>
+
+    <!-- ||||||||||||||||||||||||||||||||| --> 
+    <!-- Seleccion de servidor y personaje -->
+    <section class="seleccion-servidor" id="seccion-seleccion">
+        <h2>Selecciona tu personaje</h2>
+
+        <div id="form-seleccion">
+            <label for="servidor">Servidor:</label>
+            <select id="servidor" required>
+                <option value="">-- Selecciona un servidor --</option>
+                <option value="uruk">Uruk</option>
+                <option value="kantur">Kantur</option>
+                <option value="deption">Deption</option>
+            </select>
+
+            <label for="personaje">Personaje:</label>
+            <select id="personaje" required>
+                <option value="">-- Selecciona tu personaje --</option>
+                <option value="blackout">BlackOuT</option>
+                <option value="nekros">Nekros</option>
+                <option value="kronos">Kronos</option>
+            </select>
+
+            <button id="btn-confirmar">Confirmar</button>
+        </div>
+
+        <div id="resumen-personaje" class="oculto">
+            <p><strong>Personaje seleccionado:</strong> <span id="texto-resumen"></span></p>
+            <button id="btn-cambiar-personaje">Cambiar personaje</button>
+        </div>
+    </section>
+
+    <!-- ||||||| --> 
+    <!-- Ofertas -->
+    <section class="carrusel-ofertas">
+      <h2>Ofertas Populares</h2>
+      <div class="carrusel-pista">
+        <!-- Primer loop -->
+        <div class="oferta-item">
+          <h3>Pack de 1000 monedas</h3>
+          <p>$0.99</p>
+        </div>
+        <div class="oferta-item">
+          <h3>Armadura legendaria</h3>
+          <p>$14.99</p>
+        </div>
+        <div class="oferta-item">
+          <h3>Marco exclusivo</h3>
+          <p>$4.99</p>
+        </div>
+        <!-- Segundo loop -->
+        <div class="oferta-item">
+          <h3>Pack de 1000 monedas</h3>
+          <p>$0.99</p>
+        </div>
+        <div class="oferta-item">
+          <h3>Armadura legendaria</h3>
+          <p>$14.99</p>
+        </div>
+        <div class="oferta-item">
+          <h3>Marco exclusivo</h3>
+          <p>$4.99</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ||||||||||||||||||||| --> 
+    <!-- Catalogo de productos -->
+    <section class="catalogo-productos">
+    <h2>Catálogo</h2>
+
+    <div class="filtros-orden">
+        <!-- Filtro por tipo -->
+        <label for="filtro-tipo">Filtrar por tipo:</label>
+        <select id="filtro-tipo">
+        <option value="todo">Mostrar todo</option>
+        <option value="moneda">Monedas</option>
+        <option value="pack">Packs</option>
+        </select>
+
+        <!-- Ordenar por precio -->
+        <label for="orden-precio">Ordenar por precio:</label>
+        <select id="orden-precio">
+        <option value="asc">Menor a mayor</option>
+        <option value="desc">Mayor a menor</option>
+        </select>
+    </div>
+
+    <ul id="lista-productos" class="lista-productos"></ul>
+    </section>
+
+    <!-- ||||||||||||||||||||| -->
+    <!-- Carrito de Compras -->
+    <section class="carrito-compras">
+    <h2>Carrito</h2>
+    <ul id="lista-carrito"></ul>
+    <div class="carrito-total">
+        <strong>Total:</strong> $<span id="total-carrito">0.00</span>
+    </div>
+    <button id="finalizar-compra">Finalizar compra</button>
+    </section>
+
+    <!-- Formulario de Compra -->
+    <section class="formulario-compra oculto" id="formulario-compra">
+    <h2>Completa tu compra</h2>
+    <form id="form-datos-compra">
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" id="nombre" required>
+
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" required>
+
+        <label for="direccion">Dirección (opcional):</label>
+        <input type="text" id="direccion">
+
+        <button type="submit">Confirmar pedido</button>
+    </form>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
