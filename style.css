@@ -290,7 +290,7 @@ option {
 }
 
 /* ||||||||| */
-/* Productos */
+/* CatalogoProductos */
 .catalogo-productos {
   max-width: 900px;
   margin: 0 auto 60px;
@@ -348,8 +348,9 @@ option {
 }
 
 .producto-item img {
-  width: 100%;
+  width: 70%;
   height: 140px;
+  margin: 0 auto;
   object-fit: contain;
   margin-bottom: 10px;
   border-radius: 6px;

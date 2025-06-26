@@ -62,7 +62,7 @@ btnCambiar.addEventListener('click', () => {
 document.addEventListener("DOMContentLoaded", () => {
   const track = document.querySelector('.carrusel-pista');
   let scrollAmount = 0;
-  const speed = 0.5;
+  const speed = 0.3;
 
   let animationId;
 
@@ -76,15 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   scrollCarrusel();
-
-  track.parentElement.addEventListener('mouseenter', () => {
-    cancelAnimationFrame(animationId);
-  });
-
-  track.parentElement.addEventListener('mouseleave', () => {
-    animationId = requestAnimationFrame(scrollCarrusel);
-  });
-
 
 // ||||||| //
 //CATALOGO //
@@ -232,7 +223,7 @@ function actualizarCarrito() {
     const li = document.createElement("li");
     li.innerHTML = `
       ${item.nombre} - $${item.precio.toFixed(2)}
-      <button onclick="eliminarDelCarrito(${index})">🗑️</button>
+      <button onclick="eliminarDelCarrito(${index})"><span class="fas fa-trash-alt"></span></button>
     `;
     listaCarrito.appendChild(li);
     total += item.precio;
